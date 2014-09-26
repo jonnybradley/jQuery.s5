@@ -61,6 +61,7 @@ jQuery.fn.extend({
 				var width = $window.width();
 				switch(direction) {
 					case 'e': 
+					default:
 						slide
 							.fadeTo(0, 1)
 							.animate({
@@ -76,11 +77,11 @@ jQuery.fn.extend({
 						slide
 							.fadeTo(0, 1)
 							.animate({
-								left: -width,
+								left: -width
 							}, 0)
 							.animate({
-								left: 0,
-							}, 500);
+									left: 0
+						}, 500);
 						break;
 				}
 				return slide;
@@ -199,7 +200,7 @@ jQuery.fn.extend({
 						'</table>' +
 					'</div>'
 				)
-				.appendTo($body)
+				.appendTo(document.body)
 				.addClass('s5-hide');
 					
 				var slideChild = jQuery(this)
@@ -236,8 +237,8 @@ jQuery.fn.extend({
 
 		// load the key/mouse bindings
 		jQuery(document)
-			.keyup(jQuery.s5.keys)
-			.keypress(fn.trap);
+			.off("keyup").keyup(jQuery.s5.keys)
+			.off("keypress").keypress(fn.trap);
 
 		$window
 			.resize(function() {
@@ -314,7 +315,7 @@ jQuery.extend({
 		status: '',
 		start: function(s) {
 			s = jQuery.extend({
-				slideHeaders:'h1,h2,h3,h5,h6,.titlebar'
+				slideHeaders:'h1,h2,h3,h4,h5,h6,.titlebar'
 			},s);
 			
 			return jQuery(s.slideHeaders).first().parent().s5(s);
